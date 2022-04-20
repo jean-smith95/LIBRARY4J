@@ -1,3 +1,5 @@
+import Classes.User;
+
 import java.sql.*;
 import java.util.Scanner;
 
@@ -17,9 +19,9 @@ public class MainBdd {
         String password = sc.nextLine();
         System.out.println("FIN ! ");
       // Management.registrer(pseudo,password);
-       //Management.connection(pseudo,password);
+      User user1 = Management.connection(pseudo,password);
        // Management.deleteUser(pseudo);
-        Management.ReturnBooktoUser("One piece");
+       // Management.ReturnBooktoUser("One piece");
         while(res.next()){
            System.out.println("Livre :\nId :"+res.getString("idBook")+
                    "\nAuteur : "+res.getString("author")+

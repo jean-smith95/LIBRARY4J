@@ -1,3 +1,5 @@
+import Classes.User;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -28,14 +30,15 @@ public class Management {
 
     }
     //method to login
-    public static void connection(String pseudo, String password) throws SQLException {
+    public static User connection(String pseudo, String password) throws SQLException {
         Connection cnt = Connexion.connectorDB();
         Statement st = cnt.createStatement();
         pseudo = "\'"+pseudo +"\'";
         password = "\'"+password+"\'";
+        User user1 = null;
 
         try {
-            ResultSet res = st.executeQuery("SELECT * FROM users WHERE pseudo =" + pseudo + " AND password =  " + password);
+                 ResultSet res = st.executeQuery("SELECT * FROM users WHERE pseudo =" + pseudo + " AND password =  " + password);
 
 
 
@@ -44,8 +47,10 @@ public class Management {
                 int Id = res.getInt("idUser");
                 System.out.println("Vous êtes bien connecté ");
                 //SQL request for find the book that the user borrowed
-                ResultSet res2 = st.executeQuery("SELECT * FROM books WHERE idUser = " + Id);
+                  user1 = new User(res.getString("pseudo"),"fd",Id,res.getString("password"));
 
+                 ResultSet res2 = st.executeQuery("SELECT * FROM books WHERE idUser = " + Id);
+                System.out.println(user1);
                 while (res2.next()) {
                     // print the borrowed books
                     System.out.println("Vous avez emprunté " + res2.getString("title"));
@@ -57,9 +62,10 @@ public class Management {
         catch(SQLException throwables){
                 throwables.printStackTrace();
                 System.out.println("L'utilisateur n'existe pas");
+
             }
 
-
+       return user1;
     }
     // sql request to delete a user
     public static void deleteUser(String pseudo){
