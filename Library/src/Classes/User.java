@@ -9,7 +9,7 @@ import java.util.List;
 public class User {
     final String Name;
     final String LastName;
-    public int ID;
+    protected int ID;
     protected String Password;
     private List<Book> Books;
 
@@ -18,7 +18,7 @@ public class User {
         this.LastName = LastName;
         this.ID = ID;
         this.Password = Password;
-        this.Books = new ArrayList<>();
+        this.Books = new ArrayList<Book>();
     }
 
     public int getID(){
@@ -53,6 +53,6 @@ public class User {
     }
 
     public String getListofBorrwedBooks(){
-        return "Borrowed Books:"+Books;
+        return "Borrowed Books:"+this.Books;
     }
 }

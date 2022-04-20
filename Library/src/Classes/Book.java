@@ -12,4 +12,14 @@ public class Book {
         this.ID = ID;
         this.quantity = quantity;
     }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "quantity=" + quantity +
+                ", title='" + title + '\'' +
+                ", author='" + author + '\'' +
+                ", ID='" + ID + '\'' +
+                '}';
+    }
 }
