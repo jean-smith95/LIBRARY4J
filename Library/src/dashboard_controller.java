@@ -1,8 +1,6 @@
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 
 import java.io.IOException;
 
@@ -25,6 +23,7 @@ public class dashboard_controller {
     private Button home;
 
 
+
     
     public  void M_UsersCliked(ActionEvent event) throws IOException
     {
@@ -42,7 +41,7 @@ public class dashboard_controller {
     private void GoToBooks() throws IOException
     {
         Main m = new Main();
-        m.changeScene("manage_books.fxml");
+        m.changeScene("borrowBook.fxml");
     }
 
 
@@ -54,8 +53,22 @@ public class dashboard_controller {
     }
 
     public void LogoutClicked(ActionEvent event) {
+        Main m = new Main();
+        try {
+            m.changeScene("Login.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void HomeClicked(ActionEvent event) {
+        Main m = new Main();
+
+        try {
+
+            m.changeScene("login.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

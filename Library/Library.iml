@@ -7,8 +7,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="lib" level="application" />
-    <orderEntry type="library" name="e8b1c2e5185e51413d9acea81056c2f9-d50004ad3462e83b1563c184a72be0487b3793e7" level="project" />
-    <orderEntry type="library" exported="" name="json-simple-1.1" level="project" />
+    <orderEntry type="library" name="com.mysql.jdbc_5.1.5" level="project" />
+    <orderEntry type="library" name="Java EE 6-Java EE 6" level="project" />
   </component>
 </module>

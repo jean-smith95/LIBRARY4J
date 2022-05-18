@@ -1,7 +1,7 @@
 package Classes;
 
 
-import Classes.Book;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,11 +20,22 @@ public class User {
         this.Password = Password;
         this.Books = new ArrayList<Book>();
     }
+    public String getName() {
+        return Name;
+    }
+
+    public String getPassword() {
+        return Password;
+    }
+
+    public String getLastName() {
+        return LastName;
+    }
 
     public int getID(){
         return this.ID;
     }
-
+    /*
     public String AsktoBorrowBook(Book b1){
         if(b1.quantity == 0){
         return "Sorry "+this.Name+" the book you asked for : "+b1.title+" is currently unavailable";
@@ -41,7 +52,7 @@ public class User {
     public String getCurrentBorrowedBooks(Book b1){
         return this.Name+" currently you have loan"+b1.title;
     }
-
+*/
     public void addBook(Book b1){
         this.Books.add(b1);
     }

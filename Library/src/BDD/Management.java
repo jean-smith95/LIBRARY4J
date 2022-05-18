@@ -1,20 +1,24 @@
 package BDD;
+import Classes.Librarian;
+import Classes.User;
 
 import java.sql.Connection;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
-import Classes.User;
-
 public class Management {
+    /*exemple
+    private void insertButton() {
+        String query = "insert into books values("+idField.getText()+",'"+titleField.getText()+"','"+authorField.getText()+"',"+yearField.getText()+","+pagesField.getText()+")";
+        executeQuery(query);
+        showBooks();
+    }*/
 
 
 
         // method to register
-    public static void registrer(String pseudo, String password){
-        Connection cnt = Connexion.connectorDB();
+    public static void registrer(String pseudo, String password) throws Exception{
+        Connection cnt = Connexion.connectorDB(); // normalement c'est connectorDB() ici
         Statement st = null;
         pseudo = "\'"+pseudo +"\'";
         password = "\'"+password+"\'";
@@ -39,32 +43,46 @@ public class Management {
         Statement st = cnt.createStatement();
         pseudo = "\'"+pseudo +"\'";
         password = "\'"+password+"\'";
+        User user1 = null;
 
-        try  {
-            ResultSet res = st.executeQuery("SELECT * FROM users WHERE pseudo =" +pseudo+ " AND password =  "+password);
+        try {
+            ResultSet res = st.executeQuery("SELECT * FROM users WHERE pseudo =" + pseudo + " AND password =  " + password);
+
+
+
             res.next();
             //SQL request to find the ID of the user
             int Id = res.getInt("idUser");
             System.out.println("Vous êtes bien connecté ");
             //SQL request for find the book that the user borrowed
-            ResultSet res2 = st.executeQuery("SELECT * FROM books WHERE idUser = "+Id);
+            if(res.getString("Type")== "User") {
+                user1 = new User(res.getString("pseudo"), "fd", Id, res.getString("password"));
 
-            while(res2.next()) {
-                // print the borrowed books
-                 System.out.println("Vous avez emprunté "+res2.getString("title"));
+                ResultSet res2 = st.executeQuery("SELECT * FROM books WHERE idUser = " + Id);
+                System.out.println(user1);
+
+                while (res2.next()) {
+                    // print the borrowed books
+                    System.out.println("Vous avez emprunté " + res2.getString("title"));
+                }
+
             }
-
-
+            if(res.getString("Type")=="Librarian"){
+                user1 = new Librarian(res.getString("pseudo"), "fd", Id, res.getString("password"));
+            }
         }
-        catch (SQLException throwables) {
+
+        catch(SQLException throwables){
             throwables.printStackTrace();
-            System.out.println("Erreur");
+            System.out.println("L'utilisateur n'existe pas");
+            System.exit(-1);
+
         }
 
-        return null;
+        return user1;
     }
     //method to borrow books
-    public static void loanBooktoUserDB(String pseudo,int IDBook){
+    public static void loanBooktoUserDB(String pseudo,int IDBook) throws SQLException {
         Connection cnt = Connexion.connectorDB();
         Statement st = null;
         pseudo = "\'"+pseudo +"\'";
@@ -82,7 +100,7 @@ public class Management {
         }
     }
 
-    public static void ReturnBooktoUser(String title,int NULL) {
+    public static void ReturnBooktoUser(String title,int NULL) throws SQLException {
         Connection cnt = Connexion.connectorDB();
         Statement st = null;
 

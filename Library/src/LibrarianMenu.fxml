@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="791.0" prefWidth="1192.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LibrarianMenu_Controller">
+   <children>
+      <ImageView fx:id="home_button" fitHeight="791.0" fitWidth="1192.0" layoutX="26.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/14.png" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutY="-1.0" prefHeight="238.0" prefWidth="27.0" style="-fx-background-color: #38b6ff;" />
+      <AnchorPane layoutX="1139.0" layoutY="-1.0" prefHeight="238.0" prefWidth="53.0" style="-fx-background-color: #38b6ff;" />
+      <AnchorPane layoutY="237.0" prefHeight="554.0" prefWidth="27.0" style="-fx-background-color: #FFFFFF;" />
+      <AnchorPane layoutX="1145.0" layoutY="237.0" prefHeight="554.0" prefWidth="47.0" style="-fx-background-color: #FFFFFF;" />
+      <Button fx:id="book_button" layoutX="140.0" layoutY="657.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="159.0" text="Book Management" />
+      <Button fx:id="user_button" layoutX="506.0" layoutY="657.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="159.0" text="User Management" />
+      <Button fx:id="loan_button" layoutX="877.0" layoutY="657.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="159.0" text="Loan Management" />
+      <Button fx:id="home_button" layoutX="1036.0" layoutY="53.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="60.0" style="-fx-background-color: black;" text="." />
+   </children>
+</AnchorPane>
